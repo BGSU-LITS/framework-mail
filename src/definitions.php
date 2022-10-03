@@ -27,6 +27,7 @@ return function (Framework $framework): void {
 
             assert($settings['mail'] instanceof MailConfig);
 
+            /** @psalm-suppress TooManyArguments */
             $transport = MailerTransport::fromDsn(
                 $settings['mail']->dsn,
                 $dispatcher
