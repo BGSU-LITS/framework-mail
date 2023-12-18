@@ -12,13 +12,10 @@ use Symfony\Component\Mime\Message;
 
 final class Mail
 {
-    public MailConfig $config;
-    public Mailer $mailer;
-
-    public function __construct(MailConfig $config, Mailer $mailer)
-    {
-        $this->config = $config;
-        $this->mailer = $mailer;
+    public function __construct(
+        public MailConfig $config,
+        public Mailer $mailer,
+    ) {
     }
 
     public function message(): TemplatedEmail
@@ -41,7 +38,7 @@ final class Mail
             throw new FailedSendingException(
                 'Could not send message',
                 0,
-                $exception
+                $exception,
             );
         }
     }

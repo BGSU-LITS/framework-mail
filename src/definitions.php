@@ -19,27 +19,26 @@ return function (Framework $framework): void {
         function (
             Dispatcher $dispatcher,
             Environment $environment,
-            Settings $settings
+            Settings $settings,
         ): Mail {
             $dispatcher->addSubscriber(
-                new MessageListener(null, new BodyRenderer($environment))
+                new MessageListener(null, new BodyRenderer($environment)),
             );
 
             assert($settings['mail'] instanceof MailConfig);
 
-            /** @psalm-suppress TooManyArguments */
             $transport = MailerTransport::fromDsn(
                 $settings['mail']->dsn,
-                $dispatcher
+                $dispatcher,
             );
 
             $mailer = new Mailer(
                 $transport,
                 null,
-                $dispatcher
+                $dispatcher,
             );
 
             return new Mail($settings['mail'], $mailer);
-        }
+        },
     );
 };
