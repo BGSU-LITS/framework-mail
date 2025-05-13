@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "bgsu-lits/framework": "^2.1",
+        "bgsu-lits/framework": "^2.2",
         "symfony/mailer": "^7.0",
         "symfony/mime": "^7.0",
         "symfony/twig-bridge": "^7.0"
